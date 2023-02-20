@@ -1,9 +1,5 @@
 import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:student_record/db/functions/db_function.dart';
 import 'package:student_record/db/model/data_model.dart';
 import 'package:student_record/screens/student_display.dart';
@@ -41,11 +37,7 @@ class ListStudentWidget extends StatelessWidget {
                 title: Text('Name : ${data.studentName}'),
                 trailing: IconButton(
                   onPressed: () {
-                    if (data.id != null) {
-                      deleteStudent(data.id!);
-                    } else {
-                      print('Student id is null');
-                    }
+                    deleteAlert(context, data);
                   },
                   icon: Icon(Icons.delete),
                   color: Colors.red,
@@ -57,6 +49,33 @@ class ListStudentWidget extends StatelessWidget {
             return Divider();
           },
           itemCount: studentList.length,
+        );
+      },
+    );
+  }
+
+  void deleteAlert(BuildContext context, StudentModel data) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Delete'),
+          content: Text('Are you sure you want to delete'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('No'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                deleteStudent(data.id!);
+                Navigator.pop(context);
+              },
+              child: Text('Yes'),
+            ),
+          ],
         );
       },
     );

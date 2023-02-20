@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:student_record/screens/student_display.dart';
 
 class StudentTableWidget extends StatelessWidget {
@@ -29,7 +27,7 @@ class StudentTableWidget extends StatelessWidget {
                 height: 20,
               ),
               Table(
-                border: TableBorder.all(width: 1),
+                // border: TableBorder.all(width: 1),
                 columnWidths: {
                   0: FlexColumnWidth(2),
                   1: FlexColumnWidth(2),

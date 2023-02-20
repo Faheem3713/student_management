@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:student_record/db/functions/db_function.dart';
 import 'package:student_record/db/model/data_model.dart';
 import 'package:image_picker/image_picker.dart';
@@ -69,6 +70,7 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
               border: OutlineInputBorder(),
               label: Text('Age'),
             ),
+            keyboardType: TextInputType.number,
           ),
           SizedBox(
             height: 20,
@@ -77,7 +79,7 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
             controller: _studentClass,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              label: Text('Class'),
+              label: Text('Course'),
             ),
           ),
           SizedBox(
@@ -89,6 +91,7 @@ class _AddStudentWidgetState extends State<AddStudentWidget> {
               border: OutlineInputBorder(),
               label: Text('Contact Number'),
             ),
+            keyboardType: TextInputType.number,
           ),
           SizedBox(
             height: 20,
