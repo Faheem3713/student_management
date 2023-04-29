@@ -1,15 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:student_record/db/functions/db_function.dart';
-import 'package:student_record/db/model/data_model.dart';
-import 'package:student_record/screens/home_screen.dart';
-import 'package:student_record/theme.dart';
+import 'package:get/route_manager.dart';
+import 'package:student_record/services/db_function.dart';
+import 'package:student_record/views/widgets/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await initalizeDataBase();
-
+  await DbServices.instance.initalizeDataBase();
   runApp(MyApp());
 }
 
@@ -18,10 +14,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primaryColor: primary_color,
-      ),
+    return GetMaterialApp(
+      theme: ThemeData.light(useMaterial3: true),
       home: HomeScreen(),
     );
   }
